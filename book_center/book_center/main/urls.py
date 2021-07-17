@@ -1,7 +1,9 @@
 from django.urls import path
-from book_center.main.views import home_view, about_view
+from book_center.main.views import home_view, about_view, contact_view
+
 
 urlpatterns = [
     path('', home_view, name='home'),
-    path('about/', about_view, name='about')
+    path('about/', about_view, name='about'),
+    path('contact/', contact_view, name='contact'),
 ]
