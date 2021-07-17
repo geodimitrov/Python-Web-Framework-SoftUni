@@ -1,0 +1,15 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="project.bunker.Painkiller" />
+          <option value="my_app.people.urls.index" />
+          <option value="dj_app.dj_app.generic.urls.index" />
+          <option value="Python.file.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
