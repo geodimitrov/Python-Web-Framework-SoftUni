@@ -3,7 +3,7 @@ from book_center.main.forms import ContactForm
 
 
 def home_view(request):
-    return render(request, 'main/index.html', {})
+    return render(request, 'main/home.html', {})
 
 
 def about_view(request):
