@@ -16,15 +16,12 @@
         <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div class="d-flex justify-content-center">
                 <div class="text-center">
-                    <h1 class="mx-auto my-0 text-uppercase">
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">
-                        <p>
-                            <form method="post" action={% url 'contact' %}>
-                                {% csrf_token %}
-                                {{ form.errors }}
-                                {{ form|crispy }}
-                            </form>
-                        </p>
+                        <form method="post" action={% url 'contact' %}>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </form>
+                    </h2>
                     <a class="btn btn-primary" type="submit">Send</a>
                 </div>
             </div>

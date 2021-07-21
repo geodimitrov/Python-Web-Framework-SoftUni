@@ -1,6 +1,8 @@
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -26,6 +28,7 @@ INSTALLED_APPS = [
 
     'book_center.bc_auth',
     'book_center.main',
+    'book_center.events',
 ]
 
 MIDDLEWARE = [
@@ -89,10 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -104,6 +103,9 @@ USE_L10N = True
 USE_TZ = True
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
@@ -112,3 +114,7 @@ STATICFILES_DIRS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = reverse_lazy('sign in')
+
+AUTH_USER_MODEL = 'bc_auth.BookCenterUser'

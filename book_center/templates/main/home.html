@@ -6,25 +6,21 @@
 
 {% block navbar-menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-    <li class="nav-item"><a class="nav-link" href="#projects">Events</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">Events</a></li>
     <li class="nav-item"><a class="nav-link" href="#projects">Partners</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign In</a></li>
+    {%  if request.user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Hello, {{ request.user }}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'sign out' %}">Sign Out</a></li>
+    {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign In</a></li>
+    {% endif %}
+
 {% endblock %}
 
 {% block content %}
-    <!-- Masthead-->
-            <header class="masthead">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-            <div class="d-flex justify-content-center">
-                <div class="text-center">
-                    <h1 class="mx-auto my-0 text-uppercase"><p>Not a Club</p> A Community</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">We know you're going to like it. Don't be shy and give it a try.</h2>
-                    <a class="btn btn-primary" href="{% url 'sign up' %}">Join</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    {% include 'components/masthead.html' %}
+
         <!-- About-->
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">

@@ -1,1 +1,24 @@
-<title>Sign In</title>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Sign In</title>
+{% endblock %}
+
+{% block content %}
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">
+                        <form method="post" action="{% url 'sign in' %}">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button>Submit</button>
+                        </form>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
