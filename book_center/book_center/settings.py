@@ -1,3 +1,5 @@
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,8 +29,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'book_center.bc_auth',
-    'book_center.main',
-    'book_center.events',
+    'book_center.bc_main',
+    'book_center.bc_events',
+    'book_center.bc_profiles',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +107,7 @@ USE_TZ = True
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [

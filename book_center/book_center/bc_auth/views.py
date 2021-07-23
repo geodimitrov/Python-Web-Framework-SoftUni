@@ -1,47 +1,25 @@
-from django.contrib.auth import logout, authenticate, login
-from django.core.exceptions import ValidationError
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView
 from book_center.bc_auth.forms import SignInForm, SignUpForm
+from book_center.bc_auth.models import BookCenterUser
 
 
-def sign_up_view(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-
-    form = SignUpForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'auth/sign_up.html', context)
+class SignUpView(CreateView):
+    template_name = 'auth/sign_up.html'
+    model = BookCenterUser
+    form_class = SignUpForm
+    success_url = reverse_lazy('home')
 
 
-def sign_in_view(request):
-    if request.method == 'POST':
-        form = SignInForm(request.POST)
-        if form.is_valid():
-            user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password'],
-            )
+class SignInView(LoginView):
+    template_name = 'auth/sign_in.html'
+    form_class = SignInForm
 
-            if user:
-                login(request, user)
-                return redirect('home')
-
-    form = SignInForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'auth/sign_in.html', context)
-
-    # user = authenticate(username='geo100', password='100')
-    # login(request, user)
-    # return redirect('home')
+    def get_success_url(self):
+        return reverse('home')
 
 
-def sign_out_view(request):
-    logout(request)
-    return redirect('home')
+class SignOutView(LogoutView):
+    template_name = 'main/home.html'
+    next_page = 'home'

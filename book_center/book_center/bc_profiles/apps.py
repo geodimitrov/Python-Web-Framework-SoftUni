@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EventsConfig(AppConfig):
+class BcProfilesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'book_center.events'
+    name = 'book_center.bc_profiles'

@@ -1,9 +1,8 @@
 from django.urls import path
-from book_center.bc_auth.views import sign_up_view, sign_in_view, sign_out_view
-
+from book_center.bc_auth.views import SignUpView, SignInView, SignOutView
 
 urlpatterns = [
-    path('sign-up/', sign_up_view, name='sign up'),
-    path('sign-in/', sign_in_view, name='sign in'),
-    path('sign-out/', sign_out_view, name='sign out'),
+    path('sign-up/', SignUpView.as_view(), name='sign up'),
+    path('sign-in/', SignInView.as_view(), name='sign in'),
+    path('sign-out/', SignOutView.as_view(), name='sign out'),
 ]

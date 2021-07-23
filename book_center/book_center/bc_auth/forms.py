@@ -1,19 +1,16 @@
 from django import forms
-from django.conf import settings
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
-
-UserModel = get_user_model()
-# UserModel = settings.AUTH_USER_MODEL
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from book_center.bc_auth.models import BookCenterUser
 
 
 class SignUpForm(UserCreationForm):
     class Meta:
-        model = UserModel
-        fields = ['email', 'password1', 'password2']
+        model = BookCenterUser
+        fields = ('username', 'email', 'password1', 'password2')
 
 
-class SignInForm(forms.Form):
+class SignInForm(AuthenticationForm):
+    pass
     # username = forms.CharField(
     #     max_length=20,
     #     widget=forms.TextInput(
@@ -22,15 +19,14 @@ class SignInForm(forms.Form):
     #         }
     #     )
     # )
-    email = forms.EmailField()
-    password = forms.CharField(
-        max_length=50,
-        widget=forms.PasswordInput(
-            attrs={
-                'placeholder': 'Enter your password'
-            }
-        ),
-    )
+    # password = forms.CharField(
+    #     max_length=20,
+    #     widget=forms.PasswordInput(
+    #         attrs={
+    #             'placeholder': 'Enter your password'
+    #         }
+    #     ),
+    # )
 
     # bots_catcher = forms.CharField(
     #     widget=forms.HiddenInput(),

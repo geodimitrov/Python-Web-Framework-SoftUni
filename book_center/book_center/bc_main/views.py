@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
-from book_center.main.forms import ContactForm
+from django.views.generic import TemplateView, ListView
+from book_center.bc_main.forms import ContactForm
 
 
-def home_view(request):
-    return render(request, 'main/home.html', {})
+class HomeView(TemplateView):
+    template_name = 'main/home.html'
 
 
-def about_view(request):
-    return render(request, 'main/about.html', {})
+class AboutView(TemplateView):
+    template_name = 'main/about.html'
 
 
 def contact_view(request):

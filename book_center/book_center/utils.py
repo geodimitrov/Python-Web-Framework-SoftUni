@@ -8,3 +8,5 @@ def bot_catcher(obj):
     if bot_catcher:
         raise forms.ValidationError('Bot detected')
     return bot_catcher
+
+
