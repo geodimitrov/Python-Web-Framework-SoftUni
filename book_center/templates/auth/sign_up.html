@@ -1,10 +1,25 @@
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-<title>Sign Up</title>
+{% block title %}
+    <title>Sign Up Form</title>
+{% endblock %}
 
-<form action="{% url 'sign up' %}" method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button>Submit</button>
-</form>
+{% block content %}
+    <header class="masthead">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">
+                        <form method="post" action="{% url 'sign up' %}">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button>Submit</button>
+                        </form>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
 

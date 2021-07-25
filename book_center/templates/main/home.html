@@ -9,13 +9,13 @@
     <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">Events</a></li>
     <li class="nav-item"><a class="nav-link" href="#projects">Partners</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+
     {%  if request.user.is_authenticated %}
         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Hello, {{ request.user }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'sign out' %}">Sign Out</a></li>
     {% else %}
         <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign In</a></li>
     {% endif %}
-
 {% endblock %}
 
 {% block content %}
