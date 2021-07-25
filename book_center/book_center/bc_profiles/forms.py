@@ -1,9 +1,8 @@
 from django import forms
-
-from book_center.bc_profiles.models import UserProfile
+from book_center.bc_profiles.models import BookCenterUserProfile
 
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = BookCenterUserProfile
         fields = '__all__'

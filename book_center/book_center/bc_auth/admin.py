@@ -5,8 +5,8 @@ from book_center.bc_auth.models import BookCenterUser
 
 @admin.register(BookCenterUser)
 class BookCenterUserAdmin(UserAdmin):
-    list_display = ('email', 'is_staff')
-    list_filter = ('is_staff', 'is_superuser', 'groups')
+    list_display = ('username', 'email', 'is_staff')
+    list_filter = ('is_staff', 'groups')
     ordering = ('email',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -23,5 +23,4 @@ class BookCenterUserAdmin(UserAdmin):
     )
     readonly_fields = ('date_joined',)
 
-    def __repr__(self):
-        return 'Users'
+

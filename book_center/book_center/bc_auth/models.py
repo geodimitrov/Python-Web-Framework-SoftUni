@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import User, PermissionsMixin, UserManager
 from django.db import models
@@ -10,6 +8,9 @@ class BookCenterUserManager(UserManager):
 
 
 class BookCenterUser(AbstractBaseUser, PermissionsMixin):
+    class Meta:
+        verbose_name = 'User'
+
     username = models.CharField(
         max_length=20,
         unique=True,

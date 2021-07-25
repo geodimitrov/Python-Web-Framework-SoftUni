@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from book_center.bc_auth.models import BookCenterUser
 from book_center.bc_profiles.forms import UserProfileForm
-from book_center.bc_profiles.models import UserProfile
+from book_center.bc_profiles.models import BookCenterUserProfile
 
 
 class CreateProfileView(CreateView):
@@ -15,6 +15,6 @@ class CreateProfileView(CreateView):
 
 def show_all_profiles(request):
     context = {
-        'profiles': UserProfile.objects.all()
+        'profiles': BookCenterUserProfile.objects.all()
     }
     return render(request, 'profiles/all_profiles.html', context)
