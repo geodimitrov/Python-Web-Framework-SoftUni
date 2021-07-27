@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    <title>Thank you!</title>
+{% endblock %}
+
+{% block navbar-menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">Events</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">Sign up</a></li>
+{% endblock %}
+
+{% block content %}
+        <section class="about-section text-center" id="">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4">Thank you for contacting us.</h2>
+                    <p class="text-white-50">
+                        We have successfully received your message and will get back to you as soon as we can.
+                        While you wait, why don't you check our <a href="{% url 'show events' %}">Events</a>?
+                        You can also find us on <a href="https://www.instagram.com/">Instagram</a> and
+                        <a href="https://facebook.com/">Facebook</a>. Stay safe and keep reading!
+                    </p>
+                </div>
+            </div>
+            <img class="img-fluid" src="{% static 'main/assets/img/mail-icon-white-15.jpg' %}" alt="..."/>
+        </div>
+    </section>
+{% endblock %}
+
