@@ -1,3 +1,15 @@
-from django.shortcuts import render
+from book_center.bc_contact.forms import ContactForm
+from book_center.bc_contact.models import ContactFormModel
+from django.views.generic import TemplateView, CreateView
+from django.urls import reverse_lazy
 
-# Create your views here.
+
+class ContactFormView(CreateView):
+    template_name = 'contact/contact_form.html'
+    model = ContactFormModel
+    form_class = ContactForm
+    success_url = reverse_lazy('submit contact')
+
+
+class SubmitContactFormView(TemplateView):
+    template_name = 'contact/submit_contact.html'
