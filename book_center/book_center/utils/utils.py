@@ -1,12 +1,10 @@
-from django import forms
+from django.core.mail import send_mail
 
 
-#bot catcher
-def bot_catcher(obj):
-    bot_catcher = obj.cleaned_data['bot_catcher']
-
-    if bot_catcher:
-        raise forms.ValidationError('Bot detected')
-    return bot_catcher
+def send_confirmation_email(recipient_email):
+    subject = 'Message Received'
+    message = 'Thank you for contacting us. We have received your message. '
+    sender_email = 'book_center_notifications@protonmail.com'
+    return send_mail(subject, message, sender_email, [recipient_email])
 
 

@@ -16,28 +16,21 @@
     <header class="masthead">
         <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div class="d-flex justify-content-center">
+
                 <div class="text-center">
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">
                         We'd love to hear from you. Don't be shy, get in touch with us now and let us know
                         what you think.
                     </h2>
+                    <p>
+                    <form method="post" action={% url 'contact' %}>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </form>
+                    </p>
                 </div>
             </div>
         </div>
     </header>
-    <section class="about-section text-center" id="about">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4">Built with Bootstrap 5</h2>
-                    <form method="post" action={% url 'contact' %}>
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <a class="btn btn-primary" type="submit">Send</a>
-                    </form>
-                </div>
-            </div>
-            <img class="img-fluid" src="../../static/main/assets/img/ipad.png" alt="..."/>
-        </div>
-    </section>
 {% endblock %}
