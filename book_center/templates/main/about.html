@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     <title>About Us</title>
@@ -6,81 +7,77 @@
 
 {% block navbar-menu %}
     <li class="nav-item"><a class="nav-link" href="#who-are-we">Who are We?</a></li>
-    <li class="nav-item"><a class="nav-link" href="#mission">Our Mission</a></li>
-    <li class="nav-item"><a class="nav-link" href="#mission">Our Values</a></li>
+    <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
+    <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
     <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign in</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">Sign up</a></li>
 {% endblock %}
 
 {% block content %}
-    <!-- Who are we?-->
+    <!-- Who are We?-->
     <section class="about-section text-center" id="who-are-we">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8">
                     <h2 class="text-white mb-4">Who are We?</h2>
                     <p class="text-white-50">
-                        We are two book lovers that one day decided it was going to be fun to have a book club.
+                        It all started back in 2018 when two book lovers thought it was going to be fun to have a book
+                        club.
+                        Since then, it has grown in all sorts of directions and now it's much more than a club where
+                        people gather
+                        to discuss books with a drink in hand; it's a <em>community</em>, a place where everybody who
+                        writes, reads,
+                        or does anything in between, is welcome. For more information, click <a
+                            href="{% url 'show blog page' %}">here</a>.
                     </p>
                 </div>
             </div>
-            <img class="img-fluid" src="../../static/main/assets/img/ipad.png" alt="..."/>
+            <img class="img-fluid" src="{% static 'main/assets/img/qm5.png' %}" alt="..."/>
         </div>
     </section>
+
     <!-- Mission-->
-    <section class="projects-section bg-light" id="mission">
-        <div class="container px-4 px-lg-5">
-            <!-- Featured Project Row-->
-            <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0"
-                                                    src="../../static/main/assets/img/test_image.jpg" alt="..."/></div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="featured-text text-center text-lg-left">
-                        <h4>Shoreline</h4>
-                        <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use
-                            it for any project - even commercial projects! Download it, customize it, and publish your
-                            website!</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Project One Row-->
-            <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                <div class="col-lg-6"><img class="img-fluid" src="../../static/main/assets/img/demo-image-01.jpg"
-                                           alt="..."/></div>
-                <div class="col-lg-6">
-                    <div class="bg-black text-center h-100 project">
-                        <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto text-center text-lg-left">
-                                <h4 class="text-white">Misty</h4>
-                                <p class="mb-0 text-white-50">An example of where you can put an image of a project, or
-                                    anything else, along with a description.</p>
-                                <hr class="d-none d-lg-block mb-0 ms-0"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Project Two Row-->
-            <div class="row gx-0 justify-content-center">
-                <div class="col-lg-6"><img class="img-fluid" src="../../static/main/assets/img/demo-image-02.jpg"
-                                           alt="..."/></div>
-                <div class="col-lg-6 order-lg-first">
-                    <div class="bg-black text-center h-100 project">
-                        <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto text-center text-lg-right">
-                                <h4 class="text-white">Mountains</h4>
-                                <p class="mb-0 text-white-50">Another example of a project with its respective
-                                    description. These sections work well responsively as well, try this theme on a
-                                    small screen!</p>
-                                <hr class="d-none d-lg-block mb-0 me-0"/>
-                            </div>
-                        </div>
+    <div class="row gx-0 mb-5 mb-lg-0 justify-content-center" id="mission">
+        <div class="col-lg-6">
+            <img class="img-fluid" src="{% static 'main/assets/img/demo-image-01.jpg' %}" alt="..."/>
+        </div>
+        <div class="col-lg-6">
+            <div class="bg-black text-center h-100 project">
+                <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-left">
+                        <h4 class="text-white">Our Mission</h4>
+                        <p class="mb-0 text-white-50">
+                            This is our mission. Click <a href="{% url 'show blog page' %}">here</a> for more information.
+                        </p>
+                        <hr class="d-none d-lg-block mb-0 ms-0"/>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Partners-->
+    <div class="row gx-0 justify-content-center" id="partners">
+        <div class="col-lg-6">
+            <img class="img-fluid" src="{% static 'main/assets/img/partners_img.jpg' %}" alt="..."/>
+        </div>
+        <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project">
+                <div class="d-flex h-100">
+                    <div class="project-text w-100 my-auto text-center text-lg-right">
+                        <h4 class="text-white">Our Partners</h4>
+                        <p class="mb-0 text-white-50">
+                            To make this project happen and grow, we've teamed up with others. Click
+                            <a href="{% url 'show blog page' %}">here</a> to learm more about our partners.
+                        </p>
+                        <hr class="d-none d-lg-block mb-0 me-0"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Signup-->
     <section class="signup-section" id="signup">
         <div class="container px-4 px-lg-5">

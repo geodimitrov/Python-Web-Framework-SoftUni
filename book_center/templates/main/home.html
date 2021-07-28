@@ -7,8 +7,8 @@
 {% block navbar-menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">Events</a></li>
-    <li class="nav-item"><a class="nav-link" href="#projects">Partners</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'show blog page' %}">Blog</a></li>
 
     {%  if request.user.is_authenticated %}
         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Hello, {{ request.user }}</a></li>
