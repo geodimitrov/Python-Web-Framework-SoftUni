@@ -10,8 +10,7 @@
     <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
     <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
     <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign in</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">Sign up</a></li>
+    {% include 'components/auth_menu.html' %}
 {% endblock %}
 
 {% block content %}
@@ -23,13 +22,10 @@
                     <h2 class="text-white mb-4">Who are We?</h2>
                     <p class="text-white-50">
                         It all started back in 2018 when two book lovers thought it was going to be fun to have a book
-                        club.
-                        Since then, it has grown in all sorts of directions and now it's much more than a club where
-                        people gather
-                        to discuss books with a drink in hand; it's a <em>community</em>, a place where everybody who
-                        writes, reads,
-                        or does anything in between, is welcome. For more information, click <a
-                            href="{% url 'show blog page' %}">here</a>.
+                        club. Since then, it has grown in all directions and now it's much more than a club where
+                        people gather to discuss books with a drink in hand; it's a <em>community</em>, a place
+                        where everybody who writes, reads, or does anything in between, is welcome. For more information,
+                        click <a href="{% url 'show blog page' %}">here</a>.
                     </p>
                 </div>
             </div>

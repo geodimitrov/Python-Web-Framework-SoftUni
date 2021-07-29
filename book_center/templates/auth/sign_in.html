@@ -16,13 +16,19 @@
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">
-                        <p>
-                             <form method="post" action="{% url 'sign in' %}">
+                        <form method="post" action="{% url 'sign in' %}">
                             {% csrf_token %}
                             {{ form|crispy }}
-                            <button class="btn btn-primary">Sign in</button>
-                            </form>
-                        </p>
+                            <div class="text-light">
+                             <p>
+                            Forgot your password? <a href="{% url 'sign up' %}">Click here</a>
+                            </p>
+                            <p>
+                            Don't have an account with us? <a href="{% url 'sign up' %}">Sign up</a>
+                            </p>
+                        </div>
+                        <button class="btn btn-primary">Sign in</button>
+                        </form>
                     </h2>
                 </div>
             </div>
