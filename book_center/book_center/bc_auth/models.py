@@ -38,5 +38,9 @@ class BookCenterUser(AbstractBaseUser, PermissionsMixin):
         auto_now_add=True,
     )
 
+    is_verified = models.BooleanField(
+        default=False,
+    )
+
     USERNAME_FIELD = 'username'
     objects = BookCenterUserManager()
