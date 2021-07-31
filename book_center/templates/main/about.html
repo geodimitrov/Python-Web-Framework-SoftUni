@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>About Us</title>
+    About Us
 {% endblock %}
 
 {% block navbar-menu %}
@@ -10,7 +10,7 @@
     <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
     <li class="nav-item"><a class="nav-link" href="#partners">Partners</a></li>
     <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
-    {% include 'components/auth_menu.html' %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign In</a></li>
 {% endblock %}
 
 {% block content %}

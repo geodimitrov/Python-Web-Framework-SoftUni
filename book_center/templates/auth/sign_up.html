@@ -3,11 +3,14 @@
 {% load crispy_forms_field %}
 
 {% block title %}
-    <title>Sign Up Form</title>
+    Sign Up Form
 {% endblock %}
 
 {% block navbar-menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 {% endblock %}
+
 
 {% block content %}
     <header class="masthead">

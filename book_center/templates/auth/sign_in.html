@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    <title>Sign In Form</title>
+    Sign In Form
 {% endblock %}
 
 {% block navbar-menu %}
@@ -21,7 +21,7 @@
                             {{ form|crispy }}
                             <div class="text-light">
                              <p>
-                            Forgot your password? <a href="{% url 'sign up' %}">Click here</a>
+                            Forgot your password? <a href="{% url 'reset password' %}">Click here</a>
                             </p>
                             <p>
                             Don't have an account with us? <a href="{% url 'sign up' %}">Sign up</a>

@@ -1,15 +1,42 @@
 {% extends 'base.html' %}
-
-{% block title %}
-    <title>Our Blog</title>
-{% endblock %}
+{% load static %}
 
 {% block navbar-menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">Events</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">Sign in</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">Sign up</a></li>
 {% endblock %}
 
 {% block content %}
+
+    <section class="about-section text-center">
+        <p></p>
+    </section>
+
+    <section class="tm-section">
+        <div class="container-fluid">
+            <div class="row tm-margin-t-big">
+                {% for post in posts %}
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                        <div class="tm-content-box">
+                            <form action="{% url 'show blog post' post.slug %}">
+                                <p>
+                                    <img src="{% static 'main/assets/img/bc_main_image.jpg' %}" alt="Image"
+                                     class="tm-margin-b-20 img-fluid">
+                                </p>
+                                <h5 class="tm-margin-b-20 tm-gold-text">
+                                    <p>{{ post.title }}</p>
+                                </h5>
+                                <p><button class="btn btn-primary">Read More</button></p>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <p></p>
+    </section>
 
 {% endblock %}
