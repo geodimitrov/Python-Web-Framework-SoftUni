@@ -1,6 +1,8 @@
 from django.urls import path
-from book_center.bc_profiles.views import profile_details_view
+from book_center.bc_profiles.views import profile_details_view, profile_main_view, edit_profile_view
 
 urlpatterns = [
-    path('profile-details/<pk>', profile_details_view, name='profile details'),
+    path('dashboard/<username>', profile_main_view, name='profile main'),
+    path('profile-details/<username>', profile_details_view, name='profile details'),
+    path('edit-profile/', edit_profile_view, name='edit profile',)
 ]
