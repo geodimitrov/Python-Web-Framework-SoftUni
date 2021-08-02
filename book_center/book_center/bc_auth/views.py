@@ -1,9 +1,10 @@
 from django.contrib.auth import login
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect, render
-from book_center.bc_auth.forms import SignInForm, SignUpForm
+from book_center.bc_auth.forms import SignInForm, SignUpForm, UserPasswordResetForm
 from book_center.bc_auth.models import BookCenterUser
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, \
+    PasswordResetConfirmView, PasswordResetCompleteView
 from django.views.generic import CreateView, TemplateView
 from django.urls import reverse_lazy
 from book_center.utils.tokens import account_activation_token
@@ -25,7 +26,7 @@ class SignInView(LoginView):
         user = form.get_user()
         if user.is_verified:
             login(self.request, user)
-            return redirect('home')
+            return redirect('profile main', user.username)
         else:
             return redirect('verify email additional', user.id)
 
@@ -36,16 +37,16 @@ class SignOutView(LogoutView):
 
 
 class VerifyEmailSignUpView(TemplateView):
-    template_name = 'auth/verification/verify_email_initial.html'
+    template_name = 'auth/email_verification/verify_email_initial.html'
 
 
 class VerifyEmailSignInView(TemplateView):
-    template_name = 'auth/verification/verify_email_additional.html'
+    template_name = 'auth/email_verification/verify_email_additional.html'
 
 
 def verify_email_sign_in_view(request, pk):
     user = BookCenterUser.objects.get(pk=pk)
-    template_name = 'auth/verification/verify_email_additional.html'
+    template_name = 'auth/email_verification/verify_email_additional.html'
     context = {
         'user': user,
         'domain': 'http://127.0.0.1:8000',
@@ -67,3 +68,21 @@ def activate_email_view(request, pk, token):
             return redirect('sign in')
         else:
             return ValidationError('Activation link is invalid!')
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'auth/password_reset/reset_password.html'
+    from_email = 'book_center_notifications@protonmail.com'
+    form_class = UserPasswordResetForm
+
+
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'auth/password_reset/reset_password_sent.html'
+
+
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'auth/password_reset/reset_password_confirm.html'
+
+
+class UserPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'auth/password_reset/reset_password_complete.html'

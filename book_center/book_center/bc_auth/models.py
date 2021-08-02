@@ -42,5 +42,9 @@ class BookCenterUser(AbstractBaseUser, PermissionsMixin):
         default=False,
     )
 
+    is_active = models.BooleanField(
+        default=True,
+    )
+
     USERNAME_FIELD = 'username'
     objects = BookCenterUserManager()
