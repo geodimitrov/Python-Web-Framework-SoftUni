@@ -1,7 +1,7 @@
 from django.contrib.auth import login
 from django.core.exceptions import ValidationError
 from django.shortcuts import redirect, render
-from book_center.bc_auth.forms import SignInForm, SignUpForm, UserPasswordResetForm
+from book_center.bc_auth.forms import SignInForm, SignUpForm, UserPasswordResetForm, UserNewPasswordSetForm
 from book_center.bc_auth.models import BookCenterUser
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, \
     PasswordResetConfirmView, PasswordResetCompleteView
@@ -74,6 +74,7 @@ class UserPasswordResetView(PasswordResetView):
     template_name = 'auth/password_reset/reset_password.html'
     from_email = 'book_center_notifications@protonmail.com'
     form_class = UserPasswordResetForm
+    success_url = reverse_lazy('reset password sent')
 
 
 class UserPasswordResetDoneView(PasswordResetDoneView):
@@ -82,6 +83,8 @@ class UserPasswordResetDoneView(PasswordResetDoneView):
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'auth/password_reset/reset_password_confirm.html'
+    form_class = UserNewPasswordSetForm
+    success_url = reverse_lazy('reset password complete')
 
 
 class UserPasswordResetCompleteView(PasswordResetCompleteView):

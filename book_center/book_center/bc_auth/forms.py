@@ -88,13 +88,13 @@ class UserNewPasswordSetForm(NoLabelFormMixin, SetPasswordForm):
     new_password1 = forms.CharField(
         max_length=20,
         widget=forms.PasswordInput(
-            attrs={'placeholder': 'Enter your password'}
+            attrs={'placeholder': 'Enter your new password'}
         ),
     )
 
     new_password2 = forms.CharField(
         max_length=20,
         widget=forms.PasswordInput(
-            attrs={'placeholder': 'Confirm your password'}
+            attrs={'placeholder': 'Confirm your new password'}
         ),
     )
