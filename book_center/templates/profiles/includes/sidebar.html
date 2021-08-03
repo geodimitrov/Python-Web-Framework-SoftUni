@@ -3,8 +3,8 @@
         <ul class="nav">
 
             <!-- Dashboard Main-->
-            <li class="{% if 'index' in segment %} active {% endif %} ">
-                <a href="/">
+            <li>
+                <a href="{% url 'profile main' user.username %}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>Dashboard</p>
                 </a>

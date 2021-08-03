@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Book of the Month
+{% endblock %}
+
+{% block navbar-menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">ALL EVENTS</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">SIGN IN</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">SIGN UP</a></li>
+{% endblock %}
+
+{% block content %}
+    <section class="about-section text-center" id="who-are-we">
+        <div class="row gx-0 mb-5 mb-lg-0 justify-content-center" id="mission">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="{{ book_of_month.event_image.url }}" alt="..."/>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white">{{ book_of_month.title }}</h4>
+                            <p class="mb-0 text-white-50">
+                                {{ book_of_month.description }}
+                            </p>
+                            <p><h5 class="mb-0 text-white-50">
+                                 {{ book_of_month.event_date }}
+                            </h5></p>
+                            <hr class="d-none d-lg-block mb-0 ms-0"/>
+                            <font style="margin-top: 10px" size=2px class="text-danger">Please be aware that we have limited space for
+                                live attendance. </font>
+                            <p>
+                                <a href="{% url 'register for event' book_of_month.id %}"
+                                   style="margin-top: 10px" class="btn btn-primary" type="submit">
+                                    Register
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -7,8 +7,10 @@
 {% endblock %}
 
 {% block navbar-menu %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">EVENTS</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
+    <li class="nav-item"><a class="nav-link" href={% url 'sign up' %}>SIGN IN</a></li>
 {% endblock %}
 
 
@@ -17,15 +19,16 @@
         <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div class="d-flex justify-content-center">
                 <div class="text-center">
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">
-                        <p>
-                            <form method="post" action="{% url 'sign up' %}">
-                            {% csrf_token %}
-                            {{ form|crispy }}
-                            <button class="btn btn-primary">Submit</button>
-                            </form>
-                        </p>
-                    </h2>
+                    <p>
+                    <form method="post" action="{% url 'sign up' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-primary">Submit</button>
+                    </form>
+                    </p>
+                    <p class="text-light">Having trouble signing up?
+                        <a href="{% url 'contact' %}">Get in touch</a> with us.
+                    </p>
                 </div>
             </div>
         </div>
