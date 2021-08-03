@@ -29,6 +29,14 @@ class BookCenterUserProfile(models.Model):
         )
     )
 
+    bio = models.CharField(
+        max_length=200,
+        blank=True,
+        validators=(
+            validate_alphabet_characters_english,
+        ),
+    )
+
     profile_image = models.ImageField(
         upload_to='profiles',
         default='profiles/default_profile_img.jpg'
