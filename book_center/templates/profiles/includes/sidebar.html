@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" style="height: 450px">
     <div class="sidebar-wrapper">
         <ul class="nav">
 
@@ -12,17 +12,25 @@
 
             <!-- Discussions-->
             <li>
-                <a href="">
-                    <i class="tim-icons icon-bell-55"></i>
+                <a href="{% url 'show discussions' %}">
+                    <i class="tim-icons icon-chat-33"></i>
                     <p>Discussions</p>
                 </a>
             </li>
 
-            <!-- Notifications-->
+            <!-- Events-->
             <li>
-                <a href="">
-                    <i class="tim-icons icon-bell-55"></i>
-                    <p>Notifications</p>
+                <a href="{% url 'show my events' request.user.username %}">
+                    <i class="tim-icons icon-calendar-60"></i>
+                    <p>Events</p>
+                </a>
+            </li>
+
+             <!-- My Library-->
+            <li>
+                <a href="{% url 'show my library' request.user.username %}">
+                    <i class="tim-icons icon-book-bookmark"></i>
+                    <p>My Library</p>
                 </a>
             </li>
 
@@ -31,6 +39,14 @@
                 <a href="{% url 'profile details' user.username %}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>User Profile</p>
+                </a>
+            </li>
+
+            <!-- Change Password -->
+            <li>
+                <a href="{% url 'change password' user.username %}">
+                    <i class="tim-icons icon-key-25"></i>
+                    <p>Change Password</p>
                 </a>
             </li>
 

@@ -1,15 +1,12 @@
 {% extends 'profiles/layouts/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}
     User Profile
 {% endblock %}
 
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
-
 {% block content %}
-
     <div class="row">
     <div class="col-md-8">
         <div class="card">
@@ -37,36 +34,32 @@
                     <div class="block block-three"></div>
                     <div class="block block-four"></div>
                     <a href="javascript:void(0)">
-                        <img class="avatar" src='profiles/default_profile_img.jpg' alt="...">
+                        <img class="avatar" src="{{ user.profile_image.url }}" alt="...">
                         <h5 class="title">
-                            {{ request.user.username }}
+                            {{ user.username }}
                         </h5>
                     </a>
                     <p class="description">
-                        {{ request.user.email }}
+                        {{ user.email }}
                     </p>
                 </div>
                 </p>
-                <div class="card-description">
-                    Some words
-                </div>
                 <div class="card-footer">
                     <div class="button-container">
+                        <button href="twitter.com/" class="btn btn-icon btn-round btn-twitter">
+                            <i class="fab fa-twitter"></i>
+                        </button>
                         <button href="javascript:void(0)" class="btn btn-icon btn-round btn-facebook">
                             <i class="fab fa-facebook"></i>
                         </button>
-                        <button href="javascript:void(0)" class="btn btn-icon btn-round btn-twitter">
-                            <i class="fab fa-twitter"></i>
-                        </button>
-                        <button href="javascript:void(0)" class="btn btn-icon btn-round btn-google">
-                            <i class="fab fa-google-plus"></i>
+                        <button href="javascript:void(0)" class="btn btn-icon btn-round btn-instagram">
+                            <i class="fab fa-instagram"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 {% endblock content %}
 

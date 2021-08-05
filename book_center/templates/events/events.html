@@ -10,8 +10,7 @@
     <li class="nav-item"><a class="nav-link" href="#book-of-the-month">BOOK OF THE MONTH</a></li>
     <li class="nav-item"><a class="nav-link" href="#book-of-the-month">UPCOMING EVENTS</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">SIGN IN</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">SIGN UP</a></li>
+    {% include 'components/auth_menu.html' %}
 {% endblock %}
 
 {% block content %}
@@ -27,7 +26,7 @@
                     </p>
                 </div>
             </div>
-            <img class="img-fluid" src="{% static 'main/assets/img/read.png' %}" alt="..."/>
+            <img style="width: 280px; height: 300px" class="img-fluid" src="{% static 'main/assets/img/read.png' %}" alt="..."/>
         </div>
     </section>
 {% endblock %}
