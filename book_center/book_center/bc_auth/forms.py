@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django import forms
 
 
-class SignUpForm(UserCreationForm, NoLabelFormMixin):
+class SignUpForm(NoLabelFormMixin, UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._init_bootstrap()
@@ -39,7 +39,7 @@ class SignUpForm(UserCreationForm, NoLabelFormMixin):
         validate_bot_catcher_empty(self.cleaned_data['bots_catcher'])
 
 
-class SignInForm(AuthenticationForm, NoLabelFormMixin):
+class SignInForm(NoLabelFormMixin, AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._init_bootstrap()
@@ -79,6 +79,14 @@ class UserPasswordResetForm(NoLabelFormMixin, PasswordResetForm):
         )
     )
 
+    bots_catcher = forms.CharField(
+        widget=forms.HiddenInput(),
+        required=False,
+    )
+
+    def clean_bots_catcher(self):
+        validate_bot_catcher_empty(self.cleaned_data['bots_catcher'])
+
 
 class UserNewPasswordSetForm(NoLabelFormMixin, SetPasswordForm):
     def __init__(self, *args, **kwargs):
@@ -98,3 +106,11 @@ class UserNewPasswordSetForm(NoLabelFormMixin, SetPasswordForm):
             attrs={'placeholder': 'Confirm your new password'}
         ),
     )
+
+    bots_catcher = forms.CharField(
+        widget=forms.HiddenInput(),
+        required=False,
+    )
+
+    def clean_bots_catcher(self):
+        validate_bot_catcher_empty(self.cleaned_data['bots_catcher'])

@@ -89,3 +89,7 @@ class UserPasswordResetConfirmView(PasswordResetConfirmView):
 
 class UserPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'auth/password_reset/reset_password_complete.html'
+
+
+class RequireSignInView(TemplateView):
+    template_name = 'auth/require_sign_in.html'

@@ -1,7 +1,7 @@
 from django.urls import path
 from book_center.bc_auth.views import SignUpView, SignInView, SignOutView, UserPasswordResetView, \
     VerifyEmailSignUpView, activate_email_view, verify_email_sign_in_view, UserPasswordResetDoneView, \
-    UserPasswordResetConfirmView, UserPasswordResetCompleteView
+    UserPasswordResetConfirmView, UserPasswordResetCompleteView, RequireSignInView
 
 urlpatterns = [
     path('sign-up/', SignUpView.as_view(), name='sign up'),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('reset-password/', UserPasswordResetView.as_view(), name='reset password'),
     path('reset-password/sent/', UserPasswordResetDoneView.as_view(), name='reset password sent'),
     path('reset-password/confirm/<uidb64>/<token>', UserPasswordResetConfirmView.as_view(), name='reset password confirm'),
-    path('reset-password/complete/', UserPasswordResetCompleteView.as_view(), name='reset password complete')
+    path('reset-password/complete/', UserPasswordResetCompleteView.as_view(), name='reset password complete'),
+    path('sign-in-required/', RequireSignInView.as_view(), name='require sign in'),
 ]
