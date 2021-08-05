@@ -34,11 +34,11 @@
 <body class="">
   <div class="wrapper">
 
-    {% include 'profiles/includes/sidebar.html' %}
+    {% include 'profiles/components/sidebar.html' %}
 
     <div class="main-panel">
 
-      {% include 'profiles/includes/navigation.html' %}
+      {% include 'profiles/components/navigation.html' %}
 
       <div class="content">
 
@@ -46,17 +46,17 @@
 
       </div>
 
-      {% include 'profiles/includes/footer.html' %}
+      {% include 'profiles/components/footer.html' %}
 
     </div>
     
   </div>
 
-{#  {% include 'profiles/includes/fixed-plugin.html' %}#}
+{#  {% include 'profiles/components/fixed-plugin.html' %}#}
 
-  {% include 'profiles/includes/scripts.html' %}
+  {% include 'profiles/components/scripts.html' %}
 
-  {% include 'profiles/includes/scripts-sidebar.html' %}
+  {% include 'profiles/components/scripts-sidebar.html' %}
 
   <!-- Specific Page JS goes HERE  -->
   {% block javascripts %}{% endblock javascripts %}

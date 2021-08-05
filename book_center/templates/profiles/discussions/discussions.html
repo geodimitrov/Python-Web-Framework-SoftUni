@@ -1,0 +1,25 @@
+{% extends 'profiles/main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Discussions
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        {% for d in discussions %}
+            <div class="col-md-8">
+                <div style="width: 400px" class="card">
+                    <div class="card-body">
+                        <h4><a style="" href="{% url 'discussion details' d.id %}"> {{ d.title }}</a></h4>
+                        <p>Topic: {{ d.topic }}</p>
+                        <p>Author: {{ d.author }}</p>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
