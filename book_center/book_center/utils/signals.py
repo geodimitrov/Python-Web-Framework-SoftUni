@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from book_center.bc_contact.models import ContactFormModel
-from book_center.bc_profiles.models import BookCenterUserProfile
+from book_center.bc_profiles.models.profiles import BookCenterUserProfile
 from book_center.utils.tokens import account_activation_token
 from book_center.utils.utils import send_confirmation_email, send_verification_email
 
