@@ -12,7 +12,7 @@ def save_comment(form, discussion, user):
 
 
 @login_required()
-def discussions_view(request):
+def discussions_all_view(request):
     context = {
         'form': BookCenterDiscussionForm(),
         'discussions': BookCenterDiscussion.objects.all()
@@ -38,6 +38,21 @@ def discussion_details_view(request, pk):
         'all_comments': comments,
     }
     return render(request, 'profiles/discussions/discussion_details.html', context)
+
+
+@login_required()
+def create_discussion_view(request):
+    if request.method == 'POST':
+        form = BookCenterDiscussionForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('show all discussions')
+
+    context = {
+        'form': BookCenterDiscussionForm(),
+    }
+    return render(request, 'profiles/discussions/create_discussion.html', context)
 
 
 @login_required()

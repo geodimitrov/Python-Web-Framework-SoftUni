@@ -39,6 +39,7 @@ class BookCenterDiscussion(models.Model):
     author = models.ForeignKey(
         BookCenterUser,
         on_delete=models.CASCADE,
+        null=True
     )
 
 
