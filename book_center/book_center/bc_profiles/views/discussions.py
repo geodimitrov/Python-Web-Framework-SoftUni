@@ -1,7 +1,14 @@
-from book_center.bc_profiles.forms.discussions import BookCenterDiscussionForm
-from book_center.bc_profiles.models.discussions import BookCenterDiscussion
+from book_center.bc_profiles.forms.discussions import BookCenterDiscussionForm, DiscussionCommentForm
+from book_center.bc_profiles.models.discussions import BookCenterDiscussion, DiscussionComment
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+
+
+def save_comment(form, discussion, user):
+    comment = form.save(commit=False)
+    comment.discussion = discussion
+    comment.author = user
+    comment.save()
 
 
 @login_required()
@@ -15,8 +22,35 @@ def discussions_view(request):
 
 @login_required()
 def discussion_details_view(request, pk):
-    discussion = BookCenterDiscussion.objects.get(pk=pk)
+    discussion = get_object_or_404(BookCenterDiscussion, pk=pk)
+    comments = DiscussionComment.objects.filter(discussion=pk)
+
+    if request.method == 'POST':
+        comment_form = DiscussionCommentForm(request.POST)
+
+        if comment_form.is_valid():
+            save_comment(comment_form, discussion, request.user)
+            return redirect('discussion details', discussion.id)
+
     context = {
         'discussion': discussion,
+        'comment': DiscussionCommentForm(),
+        'all_comments': comments,
     }
     return render(request, 'profiles/discussions/discussion_details.html', context)
+
+
+@login_required()
+def edit_discussion_view(request, pk):
+    discussion = BookCenterDiscussion.objects.get(pk=pk)
+    if request.method == "POST":
+        form = BookCenterDiscussionForm(request.POST, instance=discussion)
+
+        if form.is_valid():
+            form.save()
+            return redirect('discussion details', discussion.id)
+
+    context = {
+        'form': BookCenterDiscussionForm(instance=discussion)
+    }
+    return render(request, 'profiles/discussions/edit_discussion.html', context)

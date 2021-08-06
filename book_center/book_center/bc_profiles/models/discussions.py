@@ -38,28 +38,40 @@ class BookCenterDiscussion(models.Model):
 
     author = models.ForeignKey(
         BookCenterUser,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
 
 
 class DiscussionComment(models.Model):
-    comment = models.CharField(
+    body = models.CharField(
         max_length=500,
         validators=(
             validate_alphabet_characters_english,
         )
     )
 
-    discussion = models.OneToOneField(
+    discussion = models.ForeignKey(
         BookCenterDiscussion,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
 
-    author = models.OneToOneField(
+    author = models.ForeignKey(
         BookCenterUser,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
     )
 
-    like = models.BooleanField()
-    dislike = models.BooleanField()
+    like = models.BooleanField(
+        default=False
+    )
+    dislike = models.BooleanField(
+        default=False
+    )
 
+    created_on = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    class Meta:
+        ordering = ['created_on']
