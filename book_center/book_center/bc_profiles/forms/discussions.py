@@ -1,10 +1,9 @@
-from book_center.bc_profiles.models.discussions import BookCenterDiscussion, DiscussionComment
+from book_center.bc_profiles.models.discussions import BookCenterDiscussion, BookCenterDiscussionComment
+from book_center.utils.mixins import DisableAutocompleteMixin
 from django import forms
 
-from book_center.utils.mixins import DisableAutocompleteMixin
 
-
-class BookCenterDiscussionForm(DisableAutocompleteMixin, forms.ModelForm):
+class DiscussionForm(DisableAutocompleteMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._init_bootstrap()
@@ -18,6 +17,15 @@ class BookCenterDiscussionForm(DisableAutocompleteMixin, forms.ModelForm):
         widget=forms.Textarea()
     )
 
+    created_on = forms.DateTimeField(
+        widget=forms.TextInput(
+            attrs={
+                'readonly': 'readonly'
+            }
+        ),
+        required=False,
+    )
+
 
 class DiscussionCommentForm(DisableAutocompleteMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -25,17 +33,16 @@ class DiscussionCommentForm(DisableAutocompleteMixin, forms.ModelForm):
         self._init_bootstrap()
 
     class Meta:
-        model = DiscussionComment
-        fields = ('body', )
+        model = BookCenterDiscussionComment
+        fields = ('comment', )
 
-    body = forms.CharField(
+    comment = forms.CharField(
         max_length=500,
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'Leave a comment',
                 'rows': 3,
-                'label': 'Comment'
             }
         ),
-        required=False
     )
+

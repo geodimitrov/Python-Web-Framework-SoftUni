@@ -1,24 +1,30 @@
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 from book_center.bc_auth.models import BookCenterUser
+from django.contrib.auth.admin import UserAdmin
+from django.contrib import admin
 
 
 @admin.register(BookCenterUser)
 class BookCenterUserAdmin(UserAdmin):
     list_display = ('username', 'email', 'is_staff')
-    list_filter = ('is_staff', 'groups')
+    list_filter = ('is_staff',)
     ordering = ('email',)
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email',
+                           'password',
+                           'is_staff',
+                           'is_superuser',
+                           'is_verified',
+                           'is_active',
+                           'date_joined',
+                           )}),
         ('Permissions', {
-            'fields': ('is_staff', 'is_superuser', 'is_verified', 'groups', 'user_permissions'),
+            'fields': ('groups', 'user_permissions'),
         }),
-        ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2'),
+            'fields': ('username', 'email', 'password1', 'password2'),
         }),
     )
     readonly_fields = ('date_joined',)

@@ -1,7 +1,7 @@
 from book_center.utils.validators import validate_alphabet_characters_english
-from django.core.validators import MinLengthValidator
-from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import User, PermissionsMixin, UserManager
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
@@ -10,9 +10,6 @@ class BookCenterUserManager(UserManager):
 
 
 class BookCenterUser(AbstractBaseUser, PermissionsMixin):
-    class Meta:
-        verbose_name = 'User'
-
     username = models.CharField(
         max_length=20,
         unique=True,
@@ -47,4 +44,8 @@ class BookCenterUser(AbstractBaseUser, PermissionsMixin):
     )
 
     USERNAME_FIELD = 'username'
+
     objects = BookCenterUserManager()
+
+    class Meta:
+        verbose_name = 'User'

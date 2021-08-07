@@ -1,6 +1,6 @@
-from django.db import models
 from book_center.bc_auth.models import BookCenterUser
 from book_center.utils.validators import validate_alphabet_characters_english
+from django.db import models
 
 SUPPORTED_COUNTRIES = [
     ('BG', 'Bulgaria'),
@@ -10,11 +10,6 @@ SUPPORTED_COUNTRIES = [
 
 
 class BookCenterUserProfile(models.Model):
-    class Meta:
-        verbose_name = 'Profile'
-
-    user = models.OneToOneField(BookCenterUser, on_delete=models.CASCADE)
-
     first_name = models.CharField(
         max_length=20,
         blank=True,
@@ -81,3 +76,8 @@ class BookCenterUserProfile(models.Model):
             validate_alphabet_characters_english,
         )
     )
+
+    user = models.OneToOneField(BookCenterUser, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Profile'

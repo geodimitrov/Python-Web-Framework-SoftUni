@@ -1,14 +1,14 @@
-from django.contrib import admin
+from book_center.bc_blog.models import BookCenterBlogPost, BookCenterBlogPostAuthor
 from django.contrib.admin import ModelAdmin
-from book_center.bc_blog.models import BlogPost, BlogPostAuthor
+from django.contrib import admin
 
 
-@admin.register(BlogPost)
+@admin.register(BookCenterBlogPost)
 class BlogPostAdmin(ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'author', 'date_created')
     readonly_fields = ('date_created',)
 
 
-@admin.register(BlogPostAuthor)
+@admin.register(BookCenterBlogPostAuthor)
 class BlogPostAuthorAdmin(ModelAdmin):
     list_display = ('first_name', 'last_name')

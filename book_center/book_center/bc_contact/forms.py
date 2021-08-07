@@ -1,4 +1,4 @@
-from book_center.bc_contact.models import ContactFormModel
+from book_center.bc_contact.models import BookCenterContactFormModel
 from book_center.utils.validators import validate_bot_catcher_empty
 from book_center.utils.mixins import NoLabelFormMixin
 from django import forms
@@ -10,7 +10,7 @@ class ContactForm(NoLabelFormMixin, forms.ModelForm):
         self._init_bootstrap()
 
     class Meta:
-        model = ContactFormModel
+        model = BookCenterContactFormModel
         exclude = ('reply',)
         widgets = {
             'subject': forms.TextInput(attrs={'placeholder': 'Subject'}),

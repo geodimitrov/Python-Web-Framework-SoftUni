@@ -3,10 +3,7 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 
 
-class ContactFormModel(models.Model):
-    class Meta:
-        verbose_name = 'Contact Form'
-
+class BookCenterContactFormModel(models.Model):
     subject = models.CharField(
         max_length=50,
         validators=(
@@ -37,5 +34,9 @@ class ContactFormModel(models.Model):
     reply = models.BooleanField(
         default=False,
     )
+
+    class Meta:
+        verbose_name = 'Contact Form'
+
 
 from book_center.utils.signals import *

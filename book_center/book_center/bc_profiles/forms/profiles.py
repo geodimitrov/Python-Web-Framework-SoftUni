@@ -13,7 +13,7 @@ class UserProfileForm(DisableAutocompleteMixin, forms.ModelForm):
 
     class Meta:
         model = BookCenterUserProfile
-        exclude = ('user',)
+        exclude = ('user', )
 
     bio = forms.CharField(
         max_length=200,

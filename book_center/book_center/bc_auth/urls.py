@@ -1,7 +1,10 @@
 from django.urls import path
-from book_center.bc_auth.views import SignUpView, SignInView, SignOutView, UserPasswordResetView, \
-    VerifyEmailSignUpView, activate_email_view, verify_email_sign_in_view, UserPasswordResetDoneView, \
-    UserPasswordResetConfirmView, UserPasswordResetCompleteView, RequireSignInView
+from book_center.bc_auth.views.auth import SignUpView, SignInView, SignOutView, \
+    RequireSignInView
+from book_center.bc_auth.views.email_verification import VerifyEmailSignUpView, \
+    verify_email_sign_in_view, activate_email_view
+from book_center.bc_auth.views.password_reset import UserPasswordResetView, \
+    UserPasswordResetDoneView, UserPasswordResetConfirmView, UserPasswordResetCompleteView
 
 urlpatterns = [
     path('sign-up/', SignUpView.as_view(), name='sign up'),

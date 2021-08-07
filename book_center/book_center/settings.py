@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'storages',
 
     'book_center.bc_auth',
     'book_center.bc_main',
@@ -133,6 +134,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

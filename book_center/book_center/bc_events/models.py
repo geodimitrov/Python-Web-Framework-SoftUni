@@ -1,5 +1,7 @@
-from django.db import models
+from book_center.bc_auth.models import BookCenterUser
 from book_center.utils.validators import validate_alphabet_characters_english
+from django.db import models
+
 
 EVENT_CATEGORIES = [
     ('book_month', 'Book of the Month'),
@@ -10,9 +12,6 @@ EVENT_CATEGORIES = [
 
 
 class BookCenterEvent(models.Model):
-    class Meta:
-        verbose_name = 'Event'
-
     title = models.CharField(
         max_length=100,
         validators=(
@@ -42,4 +41,30 @@ class BookCenterEvent(models.Model):
     event_image = models.ImageField(
         upload_to='events',
     )
+
     event_date = models.DateField()
+
+    class Meta:
+        verbose_name = 'Event'
+
+    def __str__(self):
+        return self.title
+
+
+class BookCenterEventRegister(models.Model):
+    event = models.ForeignKey(
+        BookCenterEvent,
+        on_delete=models.CASCADE
+    )
+
+    registration_date = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    participant = models.OneToOneField(
+        BookCenterUser,
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        verbose_name_plural = 'Event Log'
