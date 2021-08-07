@@ -2,7 +2,7 @@ from django.urls import path
 from book_center.bc_auth.views.auth import SignUpView, SignInView, SignOutView, \
     RequireSignInView
 from book_center.bc_auth.views.email_verification import VerifyEmailSignUpView, \
-    verify_email_sign_in_view, activate_email_view
+    verify_email_sign_in_view, activate_email_view, show_validation_error_view
 from book_center.bc_auth.views.password_reset import UserPasswordResetView, \
     UserPasswordResetDoneView, UserPasswordResetConfirmView, UserPasswordResetCompleteView
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('verify-email-sign-up/', VerifyEmailSignUpView.as_view(), name='verify email initial'),
     path('verify-email-sign-in/<pk>', verify_email_sign_in_view, name='verify email additional'),
     path('activate-email/<pk>/<token>/', activate_email_view, name='activate email'),
+    path('activate-email/validation-error', show_validation_error_view, name='show validation error'),
     path('reset-password/', UserPasswordResetView.as_view(), name='reset password'),
     path('reset-password/sent/', UserPasswordResetDoneView.as_view(), name='reset password sent'),
     path('reset-password/confirm/<uidb64>/<token>', UserPasswordResetConfirmView.as_view(), name='reset password confirm'),

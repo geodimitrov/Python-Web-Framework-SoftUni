@@ -23,15 +23,24 @@ def verify_email_sign_in_view(request, pk):
 
 
 def activate_email_view(request, pk, token):
+    template = 'auth/email_verification/verify_email_validation_error.html'
     try:
         user = BookCenterUser.objects.get(pk=pk)
     except:
-        raise ValidationError('User does not exist')
+        message = 'User does not exist'
+        return show_validation_error_view(request, template, message)
 
     if user and account_activation_token.check_token(user, token):
         user.is_verified = True
         user.save()
         return redirect('sign in')
     else:
-        return ValidationError('Activation link is invalid!')
+        message = 'Activation link is invalid!'
+        return show_validation_error_view(request, template, message)
 
+
+def show_validation_error_view(request, template_name, message):
+    context = {
+        'message': message
+    }
+    return render(request, template_name, context)
