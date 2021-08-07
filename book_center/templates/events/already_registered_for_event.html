@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-    Register Event
+{% block title%}
+    Already Registered
 {% endblock %}
 
 {% block navbar-menu %}
@@ -11,12 +11,13 @@
     {% include 'components/auth_menu.html' %}
 {% endblock %}
 
+
 {% block content %}
-    <section class="about-section text-center" id="book-of-the-month">
+        <section class="about-section text-center" id="book-of-the-month">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8">
-                    <h2 class="text-white mb-4">Congrats! You have successfully registered for the event</h2>
+                    <h2 class="text-white mb-4">You have already registered for this event</h2>
                 </div>
             </div>
             <img style="width: 280px; height: 300px" class="img-fluid" src="{% static 'main/assets/img/event.png' %}"

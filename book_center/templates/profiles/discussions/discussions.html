@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block content %}
-
+<a href="{% url 'create discussion' %}" class="btn btn-primary" style="margin-bottom: 17px">
+    Add New Discussion
+</a>
     <div class="row">
         {% for d in discussions %}
             <div class="col-md-8">
@@ -15,6 +17,12 @@
                         <h4><a style="" href="{% url 'discussion details' d.id %}"> {{ d.title }}</a></h4>
                         <p>Topic: {{ d.topic }}</p>
                         <p>Author: {{ d.author }}</p>
+                        <hr>
+                        <p style="font-size: 10px" class="text-white">{{ d.discussioncomment_set.count }} Comments</p>
+                        <p style="font-size: 10px" class="text-white">{{ d.discussionlike_set.count}} Likes</p>
+                        <p style="font-size: 9px" class="text-info">
+                            posted {{d.created_on}} by {{ d.author }}
+                        </p>
                     </div>
                     <div class="card-footer">
                     </div>

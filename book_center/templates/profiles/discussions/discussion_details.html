@@ -1,0 +1,66 @@
+{% extends 'profiles/main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    View Discussion
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <div style="width: 500px" class="card">
+                <div class="card-body">
+                    <h1><a style=""> {{ discussion.title }}</a></h1>
+                    <h5>Topic: <a style="color: grey">{{ discussion.topic }}</a> Author: <a
+                            style="color: gray">{{ discussion.author }}</a></h5>
+                    <p style="margin-top: 15px">{{ discussion.description }}</p>
+                    <hr>
+                    {% if user.id == discussion.author.id %}
+                        <p><a href="{% url 'edit discussion' discussion.id %}"
+                              style="margin-top: 15px; width: 190px"
+                              class="btn btn-primary">Edit Discussion</a>
+                            <a href="{% url 'delete discussion' discussion.id %}"
+                               style="margin-top: 15px; width: 190px"
+                               class="btn btn-danger">Delete</a>
+                        </p>
+                    {% else %}
+                        {% if is_liked %}
+                            <a style="font-size: 11px" href="">You have already liked this discussion.</a>
+                        {% else %}
+                            <a href="{% url 'like comment' discussion.id %}" style="font-size: 11px">Do you like this
+                            discussion? Give it a
+                            <i style="font-size: 15px" class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        {% endif %}
+                    {% endif %}
+                    <hr>
+                    <form style="" method="post">
+                        {% csrf_token %}
+                        <div style="">
+                            {{ comment|crispy }}
+                        </div>
+                        <button class="btn-primary">Publish</button>
+                    </form>
+
+                    <hr>
+                    {% for comment in all_comments %}
+
+                        <h5>{{ comment.comment }}</h5>
+                        <p style="font-size: 9px" class="text-info">
+                            posted {{ comment.created_on }} by {{ comment.author }}
+                        </p>
+                        {% if comment.author == request.user %}
+                            <button style="font-size: 11px; width: auto; margin-top: 12px" class="btn-danger">
+                                <a style="color: whitesmoke" href="{% url 'delete comment' discussion.id comment.id %}">
+                                    Delete
+                                </a>
+                            </button>
+                        {% endif %}
+                        <hr>
+                    {% endfor %}
+                </div>
+                <div class="card-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

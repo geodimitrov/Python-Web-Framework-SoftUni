@@ -1,0 +1,25 @@
+{% extends 'profiles/main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title%}
+    New Discussion
+{% endblock %}
+
+
+{% block content %}
+     <div class="row">
+            <div class="col-md-8">
+                <div style="width: 500px" class="card">
+                    <div class="card-body">
+                        <form action="{% url 'create discussion' %}" method="post">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button class="btn btn-primary">Create</button>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}

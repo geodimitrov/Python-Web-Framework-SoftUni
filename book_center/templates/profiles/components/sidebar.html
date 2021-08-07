@@ -12,7 +12,7 @@
 
             <!-- Discussions-->
             <li>
-                <a href="{% url 'show discussions' %}">
+                <a href="{% url 'show all discussions' %}">
                     <i class="tim-icons icon-chat-33"></i>
                     <p>Discussions</p>
                 </a>
@@ -26,17 +26,9 @@
                 </a>
             </li>
 
-             <!-- My Library-->
-            <li>
-                <a href="{% url 'show my library' request.user.username %}">
-                    <i class="tim-icons icon-book-bookmark"></i>
-                    <p>My Library</p>
-                </a>
-            </li>
-
             <!-- User Profile-->
             <li>
-                <a href="{% url 'profile details' user.username %}">
+                <a href="{% url 'edit profile' user.username %}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>User Profile</p>
                 </a>

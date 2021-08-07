@@ -8,8 +8,7 @@
 {% block navbar-menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'show events' %}">ALL EVENTS</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign in' %}">SIGN IN</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'sign up' %}">SIGN UP</a></li>
+    {% include 'components/auth_menu.html' %}
 {% endblock %}
 
 {% block content %}
