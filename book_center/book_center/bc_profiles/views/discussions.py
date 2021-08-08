@@ -25,7 +25,7 @@ class AllDiscussionsView(LoginRequiredMixin, ListView):
 def discussion_details_view(request, pk):
     discussion = get_object_or_404(BookCenterDiscussion, pk=pk)
     comments = BookCenterDiscussionComment.objects.filter(discussion=pk)
-    is_liked_by_user = discussion.discussionlike_set.filter(user_id=request.user.id).exists()
+    is_liked_by_user = discussion.bookcenterdiscussionlike_set.filter(user_id=request.user.id).exists()
 
     if request.method == 'POST':
         comment_form = DiscussionCommentForm(request.POST)

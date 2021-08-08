@@ -55,8 +55,4 @@ class ChangePasswordForm(NoLabelFormMixin, PasswordChangeForm):
         widget=forms.PasswordInput(
             attrs={'placeholder': 'Confirm your new password*'}
         ),
-        validators=(
-            validate_alphabet_characters_english,
-            MinLengthValidator(5)
-        )
     )
