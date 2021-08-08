@@ -18,8 +18,8 @@
                         <p>Topic: {{ d.topic }}</p>
                         <p>Author: {{ d.author }}</p>
                         <hr>
-                        <p style="font-size: 10px" class="text-white">{{ d.discussioncomment_set.count }} Comments</p>
-                        <p style="font-size: 10px" class="text-white">{{ d.discussionlike_set.count}} Likes</p>
+                        <p style="font-size: 10px" class="text-white">{{ d.bookcenterdiscussioncomment_set.count }} Comments</p>
+                        <p style="font-size: 10px" class="text-white">{{ d.bookcenterdiscussionlike_set.count}} Likes</p>
                         <p style="font-size: 9px" class="text-info">
                             posted {{d.created_on}} by {{ d.author }}
                         </p>

@@ -2158,12 +2158,14 @@ progress {
 }
 
 .form-control {
+  /*margin-top: 15px;*/
+  margin-bottom: 15px;
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 2;
   color: #212529;
   background-color: #fff;
   background-clip: padding-box;
@@ -2842,7 +2844,9 @@ textarea.form-control-lg {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #a16468;
+  color: #db6166;
+  /*color: #a16468;*/
+
 }
 
 .invalid-tooltip {
@@ -7546,11 +7550,14 @@ textarea.form-control-lg {
 }
 
 .text-danger {
-  color: #a16468 !important;
+  color: #db6166 !important;
+  /*color: #a16468 !important;*/
 }
 
 .text-light {
   color: #f8f9fa !important;
+  font-size: 11px;
+  margin-bottom: 20px;
 }
 
 .text-dark {
@@ -11179,7 +11186,7 @@ body {
   background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
 }
 .about-section p {
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 .projects-section {

@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 
 
 class ProfileMainView(LoginRequiredMixin, TemplateView):
-    template_name = 'profiles/index.html'
+    template_name = 'profiles/profiles/profile_main.html'
     pk_url_kwarg = "username"
 
 
@@ -38,4 +38,4 @@ def edit_profile_view(request, username):
         'profile': profile,
 
     }
-    return render(request, 'profiles/profiles/profile_details.html', context)
+    return render(request, 'profiles/profiles/edit_profile_details.html', context)

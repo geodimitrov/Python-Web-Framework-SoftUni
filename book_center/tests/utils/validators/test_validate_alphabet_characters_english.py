@@ -1,18 +1,18 @@
+from book_center.utils.validators import validate_alphabet_characters_english
+from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 
 class ValidateAlphabetCharactersEnglishTests(TestCase):
-    pass
+    def test_when_contains_non_english_character__expect_exception(self):
+        value = 'BabyБой'
+        expected_validation_error_message = 'You are not allowed to use non-English characters'
 
-        # def test_when_bot_detected_expect_exception(self):
-        #     value = 'bot'
-        #     expected_validation_error_message = 'Bot detected'
-        #
-        #     with self.assertRaises(ValidationError) as context:
-        #         validate_bot_catcher_empty(value)
-        #
-        #     self.assertEquals(expected_validation_error_message, context.exception.message)
-        #
-        # def test_when_no_bot_detected_expect_execution(self):
-        #     value = ''
-        #     validate_bot_catcher_empty(value)
+        with self.assertRaises(ValidationError) as context:
+             validate_alphabet_characters_english(value)
+
+        self.assertEquals(expected_validation_error_message, context.exception.message)
+
+    def test_when_does_not_contain_non_english_character__expect_execution(self):
+        value = 'BabyBoy'
+        validate_alphabet_characters_english(value)
